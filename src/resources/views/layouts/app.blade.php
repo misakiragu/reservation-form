@@ -14,9 +14,14 @@
 <body>
     <header class="header">
         <div class="header__inner">
+            <div class="menu-icon">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
             <div class="header-utilities">
                 <a class="header__logo" href="/">
-                    Attendance Management
+                    Rese
                 </a>
                 <nav>
                     <ul class="header-nav">
