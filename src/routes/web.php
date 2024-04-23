@@ -25,8 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
 
-Route::get('/thanks', [ThanksController::class, 'thanks']);
+Route::get('/thanks', [ThanksController::class, 'index'])->name('thanks');
 
 Route::get('/mypage', [UserController::class, 'mypage']);
 
 Route::get('/done', [DoneController::class, 'done']);
+
+Route::post('/register', [UserController::class, 'register'])->name('register');
+

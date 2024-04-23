@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class ThanksController extends Controller
 {
-    public function thanks()
+    public function index()
     {
-        return view('thanks');
+        return view('auth.thanks');
     }
 }

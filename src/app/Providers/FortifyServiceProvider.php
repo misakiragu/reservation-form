@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Laravel\Fortify\Contracts\CreatesNewUsers;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
@@ -20,7 +21,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CreatesNewUsers::class, CreateNewUser::class);
     }
 
     /**
