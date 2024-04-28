@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-<div class="register__link">
-    <a class="register__button-submit" href="/register">会員登録の方はこちら</a>
-</div>
 <div class="login__card">
     <div class="login__card-ttl">
         <h2>Login</h2>

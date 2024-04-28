@@ -18,7 +18,9 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('genre');
-            $table->timestamps();
+            $table->text('overview')->nullable(); // 店舗概要 (Nullable)
+            $table->string('image_url')->nullable(); // 画像URL (Nullable)
+            $table->timestamps(); // created_at と updated_at のタイムスタンプ
         });
     }
 

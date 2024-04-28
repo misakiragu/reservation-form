@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
-<div class="login__link">
-    <a class="login__button-submit" href="/login">ログインの方はこちら</a>
+<div class="thanks_card">
+    <p class="thanks_message">会員登録ありがとうございます</p>
+    <div class="login__link">
+        <a class="login__button-submit" href="/login">ログインする</a>
+    </div>
 </div>
 @endsection

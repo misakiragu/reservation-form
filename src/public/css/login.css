@@ -1,3 +1,10 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background-color: #e7e5e5;
+}
+
 .form :not(.form__button) {
     margin: 0 auto;
     width: 90%;
@@ -7,19 +14,25 @@
 .login__card-ttl {
     background: #0051ff;
     margin-bottom: 15px;
-    padding: 15px 0;
+    padding: 5px 0;
     padding-left: 30px;
     border-radius: 10px 10px 0 0;
     color: #fff;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 10px;
 }
 
 .login__card {
+    background-color: white;
     width: 360px;
-    margin: 100px auto 0;    border-radius: 10px;
+    margin: 80px auto 0;
+    border-radius: 10px;
     padding-bottom: 1px;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+input::placeholder {
+    text-align: left;
+    /* プレースホルダーを左揃えにする */
 }
 
 .form__error {
@@ -45,7 +58,7 @@
 }
 
 .form__button-submit {
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: 3px;
     background: #0051ff;

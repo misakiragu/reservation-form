@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ThanksController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Menu1Controller;
+use App\Http\Controllers\Menu2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,16 +22,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [ShopController::class, 'shop']);
-Route::middleware('auth')->group(function () {
-    Route::get('/', [AuthController::class, 'index']);
-});
+Route::get('/', [ShopController::class, 'shopAll']); // すべてのユーザー向け
+
+Route::get('/dashboard', [AuthController::class, 'index'])->middleware('auth'); // 認証が必要なユーザー向け
 
 Route::get('/thanks', [ThanksController::class, 'index'])->name('thanks');
 
-Route::get('/mypage', [UserController::class, 'mypage']);
-
 Route::get('/done', [DoneController::class, 'done']);
+
+Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register.show');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
+Route::get('/shops/{id}', [ShopController::class, 'show'])->name('shops.show');

@@ -14,37 +14,32 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="menu-icon">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
+            <div class="hamburger-menu">
+                <div class="hamburger-menu-line line-top"></div>
+                <div class="hamburger-menu-line line-middle"></div>
+                <div class="hamburger-menu-line line-bottom"></div>
             </div>
-            <div class="header-utilities">
-                <a class="header__logo" href="/">
-                    Rese
-                </a>
-                <nav>
-                    <ul class="header-nav">
-                        @if (Auth::check())
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
-                        </li>
-                        <li class="header-nav__item">
-                            <form class="form" action="/logout" method="post">
-                                @csrf
-                                <button class="header-nav__button">ログアウト</button>
-                            </form>
-                        </li>
-                        @endif
-                    </ul>
-                </nav>
-            </div>
+            <p class="header__logo">Rese</p>
         </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="/shopall">Home</a></li>
+                <li><a href="/register">Registration</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
     </header>
+
 
     <main>
         @yield('content')
     </main>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('is-active');
+        }
+    </script>
 </body>
 
 </html>
