@@ -8,8 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ThanksController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Menu1Controller;
-use App\Http\Controllers\Menu2Controller;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +33,8 @@ Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
-Route::get('/shops/{id}', [ShopController::class, 'show'])->name('shops.show');
+Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop');
+
+Route::post('/favorite/{shopId}', [FavoriteController::class, 'addFavorite'])->name('favorite.add');
+Route::delete('/favorite/{shopId}', [FavoriteController::class, 'removeFavorite'])->name('favorite.remove');
+

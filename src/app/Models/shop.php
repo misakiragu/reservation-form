@@ -26,4 +26,9 @@ class Shop extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
 }

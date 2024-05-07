@@ -1,0 +1,72 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background-color: #e7e5e5;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* ここをspace-betweenに変更しても良い */
+    padding: 20px;
+}
+
+.card {
+    width: calc(25% - 40px);
+    /* 4つのカードなので25%、40pxは間隔調整 */
+    margin: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-title {
+    margin-top: 0;
+    color: #333;
+}
+
+.card-address {
+    color: #666;
+    font-size: 14px;
+}
+
+.details-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.details-link:hover {
+    text-decoration: underline;
+}
+
+.favorite-button {
+    background: none;
+    border: none;
+    color: gray;
+    /* 通常時のハートの色 */
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.favorite-button.active i {
+    color: red;
+    /* アクティブ時の色 */
+}

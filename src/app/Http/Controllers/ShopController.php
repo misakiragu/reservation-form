@@ -18,9 +18,9 @@ class ShopController extends Controller
         return view('shopall', ['shops' => $shops]);  // ビューにデータを渡す
     }
 
-    public function show($id)
+    public function show($shop_id)
     {
-        $shop = Shop::findOrFail($id); // IDに基づき店舗情報を取得、見つからない場合は404エラー
-        return view('shops.show', compact('shop')); // 詳細ビューにデータを渡す
+        $shop = Shop::findOrFail($shop_id); // IDに基づき店舗情報を取得、見つからない場合は404エラー
+        return view('shop', compact('shop')); // 詳細ビューにデータを渡す
     }
 }
