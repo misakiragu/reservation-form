@@ -27,7 +27,7 @@ class Shop extends Model
         'updated_at'
     ];
 
-    public function favoritedBy()
+    public function favorites()
     {
         return $this->belongsToMany(User::class, 'favorites');
     }

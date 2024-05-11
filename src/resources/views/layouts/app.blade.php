@@ -15,19 +15,21 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="hamburger-menu">
+            <div class="hamburger-menu" onclick="toggleMenu()">
                 <div class="hamburger-menu-line line-top"></div>
                 <div class="hamburger-menu-line line-middle"></div>
                 <div class="hamburger-menu-line line-bottom"></div>
             </div>
             <p class="header__logo">Rese</p>
         </div>
-        <div class="nav-menu">
+        <div class="menu-content" id="menuContent" style="display: none;">
+            <button class="close-btn" onclick="toggleMenu()">&#x2715;</button>
             <ul>
-                <li><a href="/shopall">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/register">Registration</a></li>
                 <li><a href="/login">Login</a></li>
             </ul>
+        </div>
     </header>
 
 
@@ -37,8 +39,12 @@
 
     <script>
         function toggleMenu() {
-            var menu = document.querySelector('.nav-menu');
-            menu.classList.toggle('is-active');
+            var menuContent = document.getElementById('menuContent');
+            if (menuContent.style.display === "block") {
+                menuContent.style.display = "none";
+            } else {
+                menuContent.style.display = "block";
+            }
         }
     </script>
 </body>

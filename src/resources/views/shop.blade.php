@@ -9,13 +9,14 @@
 </head>
 
 <body>
+    <a href="/"> ＜ </a>
     <h1>{{ $shop->name }}</h1>
-    <p>{{ $shop->address }}</p>
-    <p>{{ $shop->genre }}</p>
-    <p>{{ $shop->overview }}</p>
     @if ($shop->image_url)
     <img src="{{ asset($shop->image_url) }}" alt="{{ $shop->name }}">
     @endif
+    <p>#{{ $shop->address }}</p>
+    <p>#{{ $shop->genre }}</p>
+    <p>{{ $shop->overview }}</p>
 </body>
 
 </html>

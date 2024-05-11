@@ -5,6 +5,35 @@
 @endsection
 
 @section('content')
+<div class="container">
+    <form action="{{ route('shop.search') }}" method="GET" class="search-form">
+        <div class="form-group">
+            <label for="area">エリア:</label>
+            <select name="area" id="area">
+                <option value="">選択してください</option>
+                <option value="北海道">北海道</option>
+                <option value="東京">東京</option>
+                <option value="大阪">大阪</option>
+                <!-- 他のエリア -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="genre">ジャンル:</label>
+            <select name="genre" id="genre">
+                <option value="">選択してください</option>
+                <option value="和食">和食</option>
+                <option value="イタリアン">イタリアン</option>
+                <option value="フレンチ">フレンチ</option>
+                <!-- 他のジャンル -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="keyword">フリーワード:</label>
+            <input type="text" name="keyword" id="keyword" placeholder="キーワードで検索">
+        </div>
+        <button type="submit" class="btn btn-primary">検索</button>
+    </form>
+</div>
 <div class="cards-container">
     @foreach ($shops as $shop)
     <div class="card">

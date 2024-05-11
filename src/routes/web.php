@@ -38,3 +38,6 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('shop');
 Route::post('/favorite/{shopId}', [FavoriteController::class, 'addFavorite'])->name('favorite.add');
 Route::delete('/favorite/{shopId}', [FavoriteController::class, 'removeFavorite'])->name('favorite.remove');
 
+Route::get('/shopall', 'ShopController@index')->name('shopall');
+Route::get('/shopall/search', 'ShopController@search')->name('shop.search');
+
