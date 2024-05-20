@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopsTable extends Migration
+class CreateGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateShopsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('area_id');
-            $table->unsignedBigInteger('genre_id');
-            $table->text('overview')->nullable(); // 店舗概要 (Nullable)
-            $table->string('image_url')->nullable(); // 画像URL (Nullable)
-            $table->timestamps(); // created_at と updated_at のタイムスタンプ
+            $table->timestamps();
         });
     }
 

@@ -47,8 +47,13 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+    public function shops()
+    {
+        return $this->hasMany(shop::class);
+    }
+
     public function favorites()
     {
-        return $this->belongsToMany(Shop::class, 'favorites');
+        return $this->hasMany(Favorite::class);
     }
 }

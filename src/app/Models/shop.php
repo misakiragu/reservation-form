@@ -12,6 +12,17 @@ class Shop extends Model
     // データベーステーブル名を指定
     protected $table = 'shops';
 
+    // リレーションの定義
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
     // テーブルのカラムで、Eloquentによる代入を許可する属性（Mass Assignment）
     protected $fillable = [
         'name',
@@ -27,8 +38,13 @@ class Shop extends Model
         'updated_at'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'favorites');
+        return $this->hasMany(Favorite::class);
     }
 }

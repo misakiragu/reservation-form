@@ -14,8 +14,8 @@
     @if ($shop->image_url)
     <img src="{{ asset($shop->image_url) }}" alt="{{ $shop->name }}">
     @endif
-    <p>#{{ $shop->address }}</p>
-    <p>#{{ $shop->genre }}</p>
+    <p>#{{ $shop->area->name }}</p>
+    <p>#{{ $shop->genre->name }}</p>
     <p>{{ $shop->overview }}</p>
 </body>
 

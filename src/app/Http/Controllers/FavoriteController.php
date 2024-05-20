@@ -2,30 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Shop;
+use App\Models\Favorite;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    public function addFavorite(Request $request, $shopId)
+    public function add(Request $request, Shop $shop)
     {
-        $userId = auth()->id();
-        DB::table('favorites')->insert([
-            'user_id' => $userId,
-            'shop_id' => $shopId,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        return back();
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'ログインしてください');
+        }
+
+        $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shop->id)->first();
+
+        if ($favorite) {
+            return back()->with('message', '既にお気に入りに追加されています');
+        } else {
+            Favorite::create([
+                'user_id' => $user->id,
+                'shop_id' => $shop->id
+            ]);
+            return back()->with('message', 'お気に入りに追加しました');
+        }
     }
 
-    public function removeFavorite(Request $request, $shopId)
+    public function remove(Request $request, Shop $shop)
     {
-        $userId = auth()->id();
-        DB::table('favorites')->where([
-            ['user_id', '=', $userId],
-            ['shop_id', '=', $shopId],
-        ])->delete();
-        return back();
+        $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'ログインしてください');
+        }
+
+        $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shop->id)->first();
+
+        if ($favorite) {
+            $favorite->delete();
+            return back()->with('message', 'お気に入りから削除しました');
+        } else {
+            return back()->with('message', 'お気に入りに登録されていません');
+        }
     }
 }

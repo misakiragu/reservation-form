@@ -44,6 +44,11 @@ html {
     font-size: 14px;
 }
 
+.card-genre {
+    color: #666;
+    font-size: 14px;
+}
+
 .details-link {
     display: inline-block;
     margin-top: 10px;

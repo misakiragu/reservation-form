@@ -40,34 +40,38 @@
         <img src="{{ asset($shop->image_url) }}" alt="{{ $shop->name }}" class="card-img">
         <div class="card-content">
             <h2 class="card-title">{{ $shop->name }}</h2>
-            <p class="card-address">
-                #{{ $shop->address }}
-            </p>
-            <p class="card-address">
-                #{{ $shop->genre }}
-            </p>
+            <p class="card-address">{{ $shop->area->name ?? '' }}</p>
+            <p class="card-genre">{{ $shop->genre->name ?? '' }}</p>
             <a href="{{ route('shop', ['shop_id' => $shop->id]) }}" class="details-link">詳しくみる</a>
-            <form action="{{ route('favorite.add', $shop->id) }}" method="POST">
+
+            @auth
+            @php
+            $isFavorited = Auth::user()->favorites()->where('shop_id', $shop->id)->exists();
+            @endphp
+
+            @if ($isFavorited)
+            <form action="{{ route('favorite.remove', $shop->id) }}" method="POST" class="favorite-form">
                 @csrf
-                <button type="button" class="favorite-button">
+                @method('DELETE')
+                <button type="submit" class="favorite-button active">
                     <i class="fas fa-heart"></i>
                 </button>
             </form>
+            @else
+            <form action="{{ route('favorite.add', $shop->id) }}" method="POST" class="favorite-form">
+                @csrf
+                <button type="submit" class="favorite-button">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </form>
+            @endif
+            @else
+            <a href="{{ route('login') }}" class="favorite-button">
+                <i class="fas fa-heart"></i> ログインしてお気に入りに追加
+            </a>
+            @endauth
         </div>
     </div>
     @endforeach
 </div>
-<script>
-    console.log('Script is loaded');
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Document is ready');
-        var favoriteButtons = document.querySelectorAll('.favorite-button');
-        favoriteButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                this.classList.toggle('active');
-                console.log('Button was clicked.'); // コンソールにクリック確認のメッセージを出力
-            });
-        });
-    });
-</script>
 @endsection
