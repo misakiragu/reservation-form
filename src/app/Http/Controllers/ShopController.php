@@ -14,10 +14,9 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function shopAll()
+    public function shopAll(Request $request)
     {
-        // リレーションをロードしてデータを取得
-        $shops = Shop::with(['area', 'genre'])->get();
+        $shops = Shop::all();
         return view('shopall', compact('shops'));
     }
 
@@ -66,5 +65,36 @@ class ShopController extends Controller
         } else {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+    }
+
+    public function search(Request $request)
+    {
+        $areaId = $request->input('area');
+        $genreId = $request->input('genre');
+        $keyword = $request->input('keyword');
+
+        // クエリビルダーを使って検索条件を設定する
+        $query = Shop::query();
+
+        if ($areaId) {
+            $query->where('area_id', $areaId);
+        }
+
+        if ($genreId) {
+            $query->where('genre_id', $genreId);
+        }
+
+        if ($keyword) {
+            // キーワードがある場合は店舗名に対して部分一致で検索する
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        // 検索結果を取得する
+        $shops = $query->get();
+
+        // その他の処理...
+
+        // 検索結果をビューに渡す
+        return view('shopall', ['shops' => $shops]);
     }
 }

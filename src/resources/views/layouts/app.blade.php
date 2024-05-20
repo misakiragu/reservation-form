@@ -26,15 +26,33 @@
         <div class="menu-content" id="menuContent" style="display: none;">
             <button class="close-btn" onclick="toggleMenu()">&#x2715;</button>
             <ul>
+                @auth
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ route('logout') }}">Logout</a></li>
+                <li><a href="/mypage">Mypage</a></li>
+                @else
                 <li><a href="/">Home</a></li>
                 <li><a href="/register">Registration</a></li>
                 <li><a href="/login">Login</a></li>
+                @endauth
             </ul>
         </div>
     </header>
 
 
     <main>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
+
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
+
         @yield('content')
     </main>
 
