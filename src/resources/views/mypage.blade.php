@@ -34,5 +34,23 @@
         </tbody>
     </table>
     @endif
+
+    @if($favorites->isEmpty())
+    <p>お気に入りがありません。</p>
+    @else
+    @foreach ($favorites as $favorite)
+    @if ($favorite->shop)
+    <div class="card">
+        <img src="{{ asset($favorite->shop->image_url) }}" alt="{{ $favorite->shop->name }}" class="card-img">
+        <div class="card-content">
+            <h2 class="card-title">{{ $favorite->shop->name }}</h2>
+            <p class="card-address">#{{ $favorite->shop->area->name ?? '' }}</p>
+            <p class="card-genre">#{{ $favorite->shop->genre->name ?? '' }}</p>
+            <a href="{{ route('shop', ['shop_id' => $favorite->shop->id]) }}" class="details-link">詳しくみる</a>
+        </div>
+    </div>
+    @endif
+    @endforeach
+    @endif
 </body>
 @endsection

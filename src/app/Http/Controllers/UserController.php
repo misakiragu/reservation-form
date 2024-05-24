@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
+use App\Models\Favorite;
 
 class UserController extends Controller
 {
@@ -46,7 +47,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $reservations = Reservation::where('user_id', $user->id)->with('shop')->get();
+        $favorites = Favorite::where('user_id', $user->id)->with('shop')->get(); // 修正：Favoriteモデルから取得する
 
-        return view('mypage', compact('user', 'reservations'));
+        return view('mypage', compact('user', 'reservations', 'favorites'));
     }
 }

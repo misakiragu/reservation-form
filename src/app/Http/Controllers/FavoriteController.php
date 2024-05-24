@@ -18,15 +18,14 @@ class FavoriteController extends Controller
 
         $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shop->id)->first();
 
-        if ($favorite) {
-            return back()->with('message', '既にお気に入りに追加されています');
-        } else {
+        if (!$favorite) {
             Favorite::create([
                 'user_id' => $user->id,
                 'shop_id' => $shop->id
             ]);
-            return back()->with('message', 'お気に入りに追加しました');
         }
+
+        return back();
     }
 
     public function remove(Request $request, Shop $shop)
@@ -44,5 +43,16 @@ class FavoriteController extends Controller
         } else {
             return back()->with('message', 'お気に入りに登録されていません');
         }
+    }
+
+    public function index()
+    {
+        $user = Auth::user();
+        $favorites = $user->favorites; // ログインユーザーのお気に入り店舗を取得
+
+        return view('mypage', [
+            'user' => $user,
+            'favorites' => $favorites,
+        ]);
     }
 }
