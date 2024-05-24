@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Reservation;
 
 class UserController extends Controller
 {
@@ -39,5 +40,13 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/')->with('message', 'ログアウトしました');
+    }
+
+    public function mypage()
+    {
+        $user = Auth::user();
+        $reservations = Reservation::where('user_id', $user->id)->with('shop')->get();
+
+        return view('mypage', compact('user', 'reservations'));
     }
 }

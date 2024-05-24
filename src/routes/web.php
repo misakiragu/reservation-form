@@ -32,4 +32,9 @@ Route::get('/shopall/search', [ShopController::class, 'search'])->name('shop.sea
 // ログアウト機能のルート
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+Route::get('/done', function () {
+    return view('done');
+})->name('done');
+
+Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage')->middleware('auth');

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use App\Models\Shop;
 
 class ReservationController extends Controller
 {
     public function store(Request $request)
     {
         // バリデーションの実行
-        $request->validate([
+        $validatedData = $request->validate([
             'shop_id' => 'required',
             'reservation_date' => 'required|date',
             'reservation_time' => 'required',
@@ -18,14 +19,15 @@ class ReservationController extends Controller
         ]);
 
         // フォームデータを保存
-        Reservation::create([
-            'shop_id' => $request->input('shop_id'),
-            'reservation_date' => $request->input('reservation_date'),
-            'reservation_time' => $request->input('reservation_time'),
-            'reservation_number' => $request->input('reservation_number'),
-            'user_id' => auth()->id(), // ログインユーザーのIDを保存する例
+        $reservation = Reservation::create([
+            'shop_id' => $validatedData['shop_id'],
+            'reservation_date' => $validatedData['reservation_date'],
+            'reservation_time' => $validatedData['reservation_time'],
+            'reservation_number' => $validatedData['reservation_number'],
+            'user_id' => auth()->id(),
         ]);
 
-        // 成功時のリダイレクトなどを行う
+        // 成功時に予約完了ページにリダイレクト
+        return redirect()->route('done');
     }
 }
