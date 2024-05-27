@@ -3,13 +3,57 @@ html {
     height: 100%;
     margin: 0;
     background-color: #e7e5e5;
+    padding: 10px 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin-right: 10px;
+    /* 各検索フィールドの間に余白を追加 */
+}
+
+select,
+input {
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+    /* 枠線を消す */
+    outline: none;
+    /* フォーカス時のアウトラインを消す */
+    box-shadow: none;
+    /* ボックスシャドウを消す */
 }
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* ここをspace-betweenに変更しても良い */
     padding: 20px;
 }
 
@@ -39,11 +83,7 @@ html {
     color: #333;
 }
 
-.card-address {
-    color: #666;
-    font-size: 14px;
-}
-
+.card-address,
 .card-genre {
     color: #666;
     font-size: 14px;

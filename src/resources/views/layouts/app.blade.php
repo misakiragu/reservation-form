@@ -37,6 +37,7 @@
                 @endauth
             </ul>
         </div>
+        @yield('header-form')
     </header>
 
 

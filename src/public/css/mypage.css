@@ -1,77 +1,78 @@
-body,
-html {
-    height: 100%;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin: 0;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
     background-color: #e7e5e5;
 }
 
-.cards-container {
+.container {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-column {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.right-column {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: right;
+}
+
+.favorite {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    /* ここをspace-betweenに変更しても良い */
-    padding: 20px;
+    gap: 20px;
 }
 
 .card {
-    width: calc(25% - 40px);
-    /* 4つのカードなので25%、40pxは間隔調整 */
-    margin: 20px;
-    background-color: #fff;
+    flex: 1 1 calc(50% - 20px);
+    /* 2つのカードを横並びに配置 */
+    box-sizing: border-box;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .card-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 .card-content {
-    padding: 15px;
+    padding: 10px;
 }
 
 .card-title {
-    margin-top: 0;
-    color: #333;
+    font-size: 1.5em;
+    margin: 0;
 }
 
-.card-address {
-    color: #666;
-    font-size: 14px;
-}
-
+.card-address,
 .card-genre {
-    color: #666;
-    font-size: 14px;
+    margin: 5px 0;
 }
 
 .details-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: #007BFF;
+    color: #007bff;
     text-decoration: none;
 }
 
 .details-link:hover {
     text-decoration: underline;
-}
-
-.favorite-button {
-    background: none;
-    border: none;
-    color: gray;
-    /* 通常時のハートの色 */
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px 10px;
-    outline: none;
-}
-
-.favorite-button.active i {
-    color: red;
-    /* アクティブ時の色 */
 }

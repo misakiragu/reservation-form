@@ -4,32 +4,33 @@
 <link rel="stylesheet" href="{{ asset('css/shopall.css') }}">
 @endsection
 
+@section('header-form')
+<form action="{{ route('shop.search') }}" method="GET" class="search-form">
+    <div class="form-group">
+        <select name="area" id="area">
+            <option value="">All area</option>
+            <option value="1">東京都</option>
+            <option value="2">大阪府</option>
+            <option value="3">福岡県</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select name="genre" id="genre">
+            <option value="">All genre</option>
+            <option value="1">寿司</option>
+            <option value="2">焼肉</option>
+            <option value="3">居酒屋</option>
+            <option value="4">イタリアン</option>
+            <option value="5">ラーメン</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="text" name="keyword" id="keyword" placeholder="Search...">
+    </div>
+</form>
+@endsection
+
 @section('content')
-<div class="container">
-    <form action="{{ route('shop.search') }}" method="GET" class="search-form">
-        <div class="form-group">
-            <select name="area" id="area">
-                <option value="">All area</option>
-                <option value="1">東京都</option>
-                <option value="2">大阪府</option>
-                <option value="3">福岡県</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <select name="genre" id="genre">
-                <option value="">All genre</option>
-                <option value="1">寿司</option>
-                <option value="2">焼肉</option>
-                <option value="3">居酒屋</option>
-                <option value="4">イタリアン</option>
-                <option value="5">ラーメン</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <input type="text" name="keyword" id="keyword" placeholder="Search...">
-        </div>
-    </form>
-</div>
 <div class="cards-container">
     @foreach ($shops as $shop)
     <div class="card">
