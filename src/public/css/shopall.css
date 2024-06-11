@@ -35,7 +35,6 @@ html {
     flex-direction: column;
     border: none;
     margin-right: 10px;
-    /* 各検索フィールドの間に余白を追加 */
 }
 
 select,
@@ -43,11 +42,7 @@ input {
     padding: 5px;
     font-size: 14px;
     border: none;
-    /* 枠線を消す */
     outline: none;
-    /* フォーカス時のアウトラインを消す */
-    box-shadow: none;
-    /* ボックスシャドウを消す */
 }
 
 .cards-container {
@@ -58,9 +53,9 @@ input {
 }
 
 .card {
-    width: calc(25% - 40px);
-    /* 4つのカードなので25%、40pxは間隔調整 */
-    margin: 20px;
+    position: relative;
+    width: calc(25% - 10px);
+    margin: 10px 5px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -68,32 +63,39 @@ input {
     overflow: hidden;
 }
 
+.card-main {
+    margin: 15px 15px;
+}
+
 .card-img {
     width: 100%;
-    height: 200px;
+    height: 150px;
     object-fit: cover;
 }
 
 .card-content {
-    padding: 15px;
+    display: flex;
 }
 
 .card-title {
-    margin-top: 0;
-    color: #333;
+    margin: 0px;
 }
 
 .card-address,
 .card-genre {
-    color: #666;
     font-size: 14px;
+    margin: 0px 10px 0px 0px;
 }
 
 .details-link {
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 8px;
+    background: #0051ff;
+    color: #fff;
+    cursor: pointer;
     display: inline-block;
     margin-top: 10px;
-    color: #007BFF;
-    text-decoration: none;
 }
 
 .details-link:hover {
@@ -101,10 +103,12 @@ input {
 }
 
 .favorite-button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
     background: none;
     border: none;
-    color: gray;
-    /* 通常時のハートの色 */
+    color: rgb(199, 199, 199);
     font-size: 24px;
     cursor: pointer;
     padding: 5px 10px;
@@ -113,5 +117,4 @@ input {
 
 .favorite-button.active i {
     color: red;
-    /* アクティブ時の色 */
 }

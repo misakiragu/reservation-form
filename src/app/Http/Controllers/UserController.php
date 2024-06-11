@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('auth.register');  // 登録フォームのビューファイルを指定
+        return view('auth.register');
     }
 
     public function register(Request $request)
@@ -25,12 +25,10 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
 
-        // リクエストからお気に入り店舗のIDを受け取り、ユーザーに紐付ける
         if ($request->has('favorites')) {
             $user->favorites()->sync($request->input('favorites'));
         }
 
-        // 登録後、/thanksページへリダイレクト
         return redirect('/thanks')->with('status', 'Registration successful!');
     }
 
@@ -47,7 +45,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $reservations = Reservation::where('user_id', $user->id)->with('shop')->get();
-        $favorites = Favorite::where('user_id', $user->id)->with('shop')->get(); // 修正：Favoriteモデルから取得する
+        $favorites = Favorite::where('user_id', $user->id)->with('shop')->get();
 
         return view('mypage', compact('user', 'reservations', 'favorites'));
     }

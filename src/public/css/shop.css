@@ -6,18 +6,112 @@ html {
     padding: 10px 20px;
 }
 
-.shop-name {
+.shop-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop {
+    width: 48%;
+}
+
+.reservation {
+    background-color: #0051ffcc;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 48%;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-content a {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-decoration: none;
+}
+
+.shop img {
+    max-width: 100%;
+    height: auto;
+}
+
+.shop-tag {
     display: flex;
 }
 
-.shop-name a {
+.shop-tag p {
+    margin: 30px 10px 10px 0px;
+}
+
+.reservation form {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    font-size: large;
+    flex-direction: column;
+}
+
+.reservation label {
+    margin-top: 10px;
+}
+
+.reservation button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #0051ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.reservation button:hover {
+    background-color: #0056b3;
+}
+
+.reservation table {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgba(75, 163, 252, 0.9);
+    /* 背景色を調整 */
+    border-radius: 8px;
+    padding: 20px;
+    /* パディングを追加して余白を確保 */
+}
+
+.reservation th,
+.reservation td {
+    padding: 10px 20px;
+    /* パディングを調整 */
+    border: none;
+    vertical-align: middle;
+    color: white;
+    /* テキストの色を白に設定 */
+}
+
+.reservation th {
+    text-align: left;
+    font-weight: bold;
+}
+
+.reservation td {
+    text-align: left;
+}
+
+/* フォームの入力フィールドも調整 */
+.reservation input[type="date"],
+.reservation input[type="time"],
+.reservation input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }

@@ -10,7 +10,6 @@ class ReservationController extends Controller
 {
     public function store(Request $request)
     {
-        // バリデーションの実行
         $validatedData = $request->validate([
             'shop_id' => 'required',
             'reservation_date' => 'required|date',
@@ -18,7 +17,6 @@ class ReservationController extends Controller
             'reservation_number' => 'required|integer|min:1',
         ]);
 
-        // フォームデータを保存
         $reservation = Reservation::create([
             'shop_id' => $validatedData['shop_id'],
             'reservation_date' => $validatedData['reservation_date'],
@@ -27,7 +25,6 @@ class ReservationController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        // 成功時に予約完了ページにリダイレクト
         return redirect()->route('done');
     }
 }

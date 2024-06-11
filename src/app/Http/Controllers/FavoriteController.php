@@ -48,7 +48,7 @@ class FavoriteController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $favorites = $user->favorites; // ログインユーザーのお気に入り店舗を取得
+        $favorites = $user->favorites;
 
         return view('mypage', [
             'user' => $user,

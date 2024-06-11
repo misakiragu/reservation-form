@@ -35,10 +35,12 @@
     @foreach ($shops as $shop)
     <div class="card">
         <img src="{{ asset($shop->image_url) }}" alt="{{ $shop->name }}" class="card-img">
-        <div class="card-content">
+        <div class="card-main">
             <h2 class="card-title">{{ $shop->name }}</h2>
-            <p class="card-address">#{{ $shop->area->name ?? '' }}</p>
-            <p class="card-genre">#{{ $shop->genre->name ?? '' }}</p>
+            <div class="card-content">
+                <p class="card-address">#{{ $shop->area->name ?? '' }}</p>
+                <p class="card-genre">#{{ $shop->genre->name ?? '' }}</p>
+            </div>
             <a href="{{ route('shop', ['shop_id' => $shop->id]) }}" class="details-link">詳しくみる</a>
 
             @auth

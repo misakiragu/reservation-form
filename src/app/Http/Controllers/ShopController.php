@@ -22,25 +22,21 @@ class ShopController extends Controller
 
     public function show($shop_id)
     {
-        $shop = Shop::findOrFail($shop_id); // IDに基づき店舗情報を取得、見つからない場合は404エラー
-        return view('shop', compact('shop')); // 詳細ビューにデータを渡す
+        $shop = Shop::findOrFail($shop_id);
+        return view('shop', compact('shop'));
     }
 
     public function favorite(Request $request, Shop $shop)
     {
-        // 認証済みユーザーを取得
         $user = Auth::user();
 
         if ($user) {
-            // Userのid取得
             $user_id = Auth::id();
 
-            // 既にいいねしているかチェック
             $existingFavorite = Favorite::where('article_id', $shop->id)
                 ->where('user_id', $user_id)
                 ->first();
 
-            // 既にいいねしている場合は何もせず、そうでない場合は新しいいいねを作成する
             if (!$existingFavorite) {
                 $favorite = new Favorite();
                 $favorite->article_id = $shop->id;
@@ -48,7 +44,6 @@ class ShopController extends Controller
                 $favorite->save();
             }
 
-            // 記事の状態を返す
             return response()->json([
                 'article' => [
                     'slug' => $shop->slug,
@@ -58,8 +53,8 @@ class ShopController extends Controller
                     'tagList' => $shop->tags->pluck('name'),
                     'createdAt' => $shop->created_at,
                     'updatedAt' => $shop->updated_at,
-                    'favorited' => true, // いいねされた状態を示す
-                    'favoritesCount' => $shop->favorites()->count(), // いいねの合計数を取得
+                    'favorited' => true,
+                    'favoritesCount' => $shop->favorites()->count(),
                 ]
             ]);
         } else {
@@ -73,7 +68,6 @@ class ShopController extends Controller
         $genreId = $request->input('genre');
         $keyword = $request->input('keyword');
 
-        // クエリビルダーを使って検索条件を設定する
         $query = Shop::query();
 
         if ($areaId) {
@@ -85,16 +79,11 @@ class ShopController extends Controller
         }
 
         if ($keyword) {
-            // キーワードがある場合は店舗名に対して部分一致で検索する
             $query->where('name', 'like', '%' . $keyword . '%');
         }
 
-        // 検索結果を取得する
         $shops = $query->get();
 
-        // その他の処理...
-
-        // 検索結果をビューに渡す
         return view('shopall', ['shops' => $shops]);
     }
 }

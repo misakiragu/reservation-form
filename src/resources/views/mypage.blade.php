@@ -10,31 +10,20 @@
     <h1>{{ $user->name }}さん</h1>
     <div class="container">
         <div class="left-column reservation">
-            <h2>予約一覧</h2>
+            <h2>予約状況</h2>
 
             @if($reservations->isEmpty())
             <p>予約がありません。</p>
             @else
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>店舗名</th>
-                        <th>予約日</th>
-                        <th>予約時間</th>
-                        <th>予約人数</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($reservations as $reservation)
-                    <tr>
-                        <td>{{ $reservation->shop->name }}</td>
-                        <td>{{ $reservation->reservation_date }}</td>
-                        <td>{{ $reservation->reservation_time }}</td>
-                        <td>{{ $reservation->reservation_number }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            @foreach($reservations as $reservation)
+            <div class="reservation-card">
+                <h3>予約{{ $reservation->id }}</h3>
+                <p>Shop:{{ $reservation->shop->name }}</p>
+                <p>Date: {{ $reservation->reservation_date }}</p>
+                <p>Time: {{ $reservation->reservation_time }}</p>
+                <p>Number: {{ $reservation->reservation_number }}</p>
+            </div>
+            @endforeach
             @endif
         </div>
 

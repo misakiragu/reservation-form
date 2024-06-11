@@ -12,7 +12,7 @@
     height: 60px;
     border-radius: 10px;
     background-color: #0051ff;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .menu-icon {
@@ -57,14 +57,10 @@
 
 :root {
     --hamburger-menu-size: 100%;
-    /* メニューの大きさ */
     --hamburger-menu-padding: 16px;
     --hamburger-menu-border-px: 4px;
-    /* 線の太さ */
     --hamburger-menu-border-color: #ffffff;
-    /* 線の色 */
     --hamburger-menu-transition: 0.3s;
-    /* アニメーション秒数 */
 }
 
 .menu-content {
@@ -112,7 +108,7 @@
     height: 60px;
     background-color: #0051ff;
     border-radius: 10px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 
