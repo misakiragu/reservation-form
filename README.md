@@ -47,31 +47,25 @@ Node.js & npm
 ![image](https://github.com/misakiragu/reservation-form/assets/141226793/feac905c-f289-4778-8e74-eb676804c90a)
 
 ## 環境構築
-リポジトリをクローン
-
+### リポジトリをクローン
 git clone https://github.com/your-repo/shop-reservation-system.git
 cd shop-reservation-system
 
-依存関係をインストール
-
+### 依存関係をインストール
 composer install
 npm install
 
-環境変数を設定
-
+### 環境変数を設定
 cp .env.example .env
 php artisan key:generate
 .envファイルを開き、データベースや他の設定を更新します。
 
-マイグレーションとシーダーを実行
-
+### マイグレーションとシーダーを実行
 php artisan migrate --seed
 
-アセットをビルド
-
+### アセットをビルド
 npm run dev
 
-アプリケーションをサーブ
-
+### アプリケーションをサーブ
 php artisan serve
 
